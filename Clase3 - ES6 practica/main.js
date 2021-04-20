@@ -32,7 +32,7 @@ console.log("Los alumnos mayores a 25 años son: ", alumnosEdades);
 
 const edadTotal = alumnos.reduce(function(a, b){
     return a + b.edad;
-}, 0) //Por qué este 0 (PREGUNTAR).
+}, 0) //La "a" se inicializa en el número este.
 
 console.log("La edad total de los alumnos es: ", edadTotal);
 
@@ -75,3 +75,36 @@ console.log("Propiedad 'mascota' agregada: ", arr);
 const edadPromedio = edadTotal/alumnos.length;
 
 console.log("El promedio de las edades es: ", edadPromedio);
+
+
+//9. Buscar una API que más te guste en https://github.com/toddmotto/public-apis pero que debajo de la columna Auth especifique "No".
+
+//Cat Facts: https://alexwohlbruck.github.io/cat-facts/
+
+
+//10. Implementar una función getDataWithPromises que utilice la API de Promises usando .then() (investigar). PUNTO 12 IMPLEMENTADO ACÁ CON EL CATCH().
+
+function getDataWithPromises(){
+    const json = response => response.json()
+fetch('https://cat-fact.herokuapp.com/facts')//obtiene el resultado del URL.
+    .then(json)//lo convierte en JSON (se convierte en un texto JSON legible para JS)
+    .then(data => {
+       console.log('Request succeeded with JSON response', data)
+    })
+    .catch(error => {
+       console.log('Request failed', error)
+    })
+}
+
+getDataWithPromises();
+
+
+//11. Implementar una función getDataWithAsync que utilice async/await junto con la API fetch para buscar los datos de la API elegida.
+
+const getDataWithAsync = async () => {
+    const response = await fetch('https://cat-fact.herokuapp.com/facts')//Obtengo todo lo que está en esa API.
+    const facts = await response.json()//Pasa a JSON.
+    console.log(facts)
+}
+
+getDataWithAsync()  
